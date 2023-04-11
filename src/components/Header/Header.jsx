@@ -3,7 +3,7 @@ import UserMenu from 'components/UserMenu/UserMenu';
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { getIsLoggedIn } from 'redux/selector/selectors';
+import { getError, getIsLoggedIn } from 'redux/selector/selectors';
 import {
   ButtonNav,
   HeaderBox,
@@ -13,9 +13,11 @@ import {
   LinkHeader,
   LinkNav,
 } from './Header.styled';
+import Loader from 'components/Loader/Loader';
 
 const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
+  const error = useSelector(getError);
 
   return (
     <>
@@ -50,7 +52,7 @@ const Header = () => {
         </HeaderNav>
       </HeaderBox>
 
-      <Suspense fallback={<p>Загружаем...</p>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </>

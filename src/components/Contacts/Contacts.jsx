@@ -3,8 +3,8 @@ import ContactList from 'components/ContactList/ContactList';
 import ContactForm from 'components/ContactsForm/ContactsForm';
 import ErrorCard from 'components/ErrorCard/ErrorCard';
 import Filter from 'components/Filter/Filter';
+import Loader from 'components/Loader/Loader';
 import Title from 'components/Title/Title';
-import { RotatingLines } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 import { selectError, selectOperetion } from 'redux/selector/selectors';
 
@@ -19,15 +19,7 @@ const Contacts = () => {
         <div>
           <Title title="Contacts"></Title>
           <Filter />
-          {operetion === 'fatch' && (
-            <RotatingLines
-              strokeColor="#188ce8"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="60"
-              visible={true}
-            />
-          )}
+          {operetion === 'fatch' && <Loader />}
           <ContactList />
         </div>
       </Container>

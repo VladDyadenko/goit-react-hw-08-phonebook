@@ -10,6 +10,7 @@ const userInitialState = {
   user: { name: '', email: '' },
   token: '',
   isLoading: false,
+  isRefreshUser: false,
   error: null,
   isLoggedIn: false,
 };
@@ -26,7 +27,7 @@ const userAuthSlise = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
-        state.error = payload.user.error;
+        state.error = payload;
       })
       .addCase(logInUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
@@ -34,7 +35,7 @@ const userAuthSlise = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(logInUser.rejected, (state, { payload }) => {
-        state.error = payload.user.error;
+        state.error = payload.error;
       })
       .addCase(logOut.fulfilled, state => {
         state.user = { name: '', email: '' };
@@ -42,14 +43,19 @@ const userAuthSlise = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(logOut.rejected, (state, { payload }) => {
-        state.error = payload.user.error;
+        state.error = payload;
+      })
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshUser = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isLoggedIn = true;
+        state.isRefreshUser = false;
       })
       .addCase(refreshUser.rejected, (state, { payload }) => {
         state.error = payload;
+        state.isRefreshUser = false;
       });
   },
 });
