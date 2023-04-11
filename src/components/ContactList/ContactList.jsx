@@ -30,11 +30,11 @@ const ContactList = () => {
     <>
       {contacts?.length > 0 ? (
         <Box>
-          {contacts?.map(({ id, name, phone }) => (
+          {contacts?.map(({ id, name, number }) => (
             <List key={id}>
               <AiOutlinePhone style={svgStylePhon} size={20}></AiOutlinePhone>
               <ContactName>{name}</ContactName>
-              <ContactNumber>{phone}</ContactNumber>
+              <ContactNumber>{number}</ContactNumber>
               <>
                 <Button
                   sx={{ width: '30%', fontFamily: 'Roboto Slab' }}
@@ -42,7 +42,7 @@ const ContactList = () => {
                   size="small"
                   type="button"
                   onClick={e => {
-                    toast.success('The contact has been deleted!');
+                    toast.warning('The contact has been deleted!');
                     dispatch(deleteContacts(id));
                   }}
                 >
