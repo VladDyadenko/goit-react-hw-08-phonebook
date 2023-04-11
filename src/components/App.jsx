@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { lazy, useEffect } from 'react';
 import { refreshUser } from 'redux/operetions/auth-operetions';
 import PrivateRoute from './PrivateRoute/PrivatRoute';
 import Home from 'Page/Home/Home';
-import { getIsLoggedIn } from 'redux/selector/selectors';
+
 import PublicRoute from './PublicRoute/PublicRoute';
 import NotFaund from 'Page/NotFaund/NotFaund';
 import Header from './Header/Header';
@@ -15,7 +15,6 @@ const AuthUserComponent = lazy(() =>
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(getIsLoggedIn);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -25,7 +24,7 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Header />}>
-          <Route index element={isLoggedIn === false && <Home />} />
+          <Route index element={<Home />} />
           <Route element={<PrivateRoute />}>
             <Route path="contacts" element={<Contacts />} />
           </Route>

@@ -22,13 +22,15 @@ const Header = () => {
       <HeaderBox>
         <HeaderNav position="static">
           <Toolbar sx={{ padding: '5px' }}>
-            {isLoggedIn === false && <HeaderButton variant="contained">
+            <HeaderButton variant="contained">
               <LinkHeader to="/"> Home</LinkHeader>
-            </HeaderButton>}
+            </HeaderButton>
 
-            { isLoggedIn === true && <HeaderButton variant="contained">
-              <LinkHeader to="contacts">Contacts</LinkHeader>
-            </HeaderButton>}
+            {isLoggedIn === true && (
+              <HeaderButton variant="contained">
+                <LinkHeader to="contacts">Contacts</LinkHeader>
+              </HeaderButton>
+            )}
 
             <HeaderTitle variant="h6" component="div">
               Phonebook

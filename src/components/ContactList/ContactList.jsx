@@ -1,16 +1,14 @@
 import { AiOutlinePhone } from 'react-icons/ai';
 import { FaTrashAlt } from 'react-icons/fa';
 
-import {
-  Box,
-  ContactName,
-  ContactNumber,
-  List,
-} from './ContactList.styled';
+import { Box, ContactName, ContactNumber, List } from './ContactList.styled';
 import { deleteContacts, fetchContacts } from 'redux/operetions/operetions';
 import { useDispatch, useSelector } from 'react-redux';
 import Massege from 'components/Massege';
-import { selectOperetion, selectVisibleContacts } from 'redux/selector/selectors';
+import {
+  selectOperetion,
+  selectVisibleContacts,
+} from 'redux/selector/selectors';
 import { useEffect } from 'react';
 import { Audio } from 'react-loader-spinner';
 import { Button } from '@mui/material';
@@ -38,14 +36,17 @@ const ContactList = () => {
               <ContactName>{name}</ContactName>
               <ContactNumber>{phone}</ContactNumber>
               <>
-              <Button
-              sx={{ width: '30%', fontFamily: 'Roboto Slab' }}
-              variant="contained" size="small"
-              type="button" onClick={e => {
-                toast.success('The contact has been deleted!')
-                dispatch(deleteContacts(id))}}
-              >
-                 {operetion === id ? (
+                <Button
+                  sx={{ width: '30%', fontFamily: 'Roboto Slab' }}
+                  variant="contained"
+                  size="small"
+                  type="button"
+                  onClick={e => {
+                    toast.success('The contact has been deleted!');
+                    dispatch(deleteContacts(id));
+                  }}
+                >
+                  {operetion === id ? (
                     <Audio
                       height="20"
                       width="40"
@@ -60,8 +61,7 @@ const ContactList = () => {
                       Delete <FaTrashAlt style={svgStyleUser} size={15} />
                     </>
                   )}
-              </Button>
-
+                </Button>
               </>
             </List>
           ))}

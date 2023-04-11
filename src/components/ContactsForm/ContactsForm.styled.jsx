@@ -7,4 +7,3 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
 `;
-

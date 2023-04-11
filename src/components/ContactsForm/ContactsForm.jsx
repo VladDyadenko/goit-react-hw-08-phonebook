@@ -32,14 +32,14 @@ function ContactForm() {
     }
   };
   const addContact = ({ name, number }) => {
-    const newContact = { name, number};
+    const newContact = { name, number };
     if (
       items.some(contact => contact.name.toLowerCase() === name.toLowerCase())
     ) {
       alert(`${name} is already in contacts.`);
     } else {
       dispatch(addContacts(newContact));
-      toast.success('Сontact saved successfully!')
+      toast.success('Сontact saved successfully!');
       reset();
     }
   };

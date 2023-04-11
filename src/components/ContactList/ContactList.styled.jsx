@@ -7,14 +7,14 @@ export const Box = styled.ul`
   padding: 5px;
   list-style: none;
   font-size: 18px;
-  align-items:center
+  align-items: center;
 `;
 export const List = styled.li`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: start;
-   margin-bottom: 8px;
+  margin-bottom: 8px;
 `;
 export const ContactName = styled.span`
   min-width: 30%;
@@ -42,8 +42,5 @@ export const ContactNumber = styled.span`
   @media screen and (min-width: 768px) {
     width: 40%;
     font-size: 18px;
-    
   }
 `;
-
-

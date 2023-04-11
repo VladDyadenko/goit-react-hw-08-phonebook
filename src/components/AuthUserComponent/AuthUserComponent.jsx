@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import Login from 'Page/Login/Login';
 import Register from 'Page/Register/Register';
 import { Fragment, useState } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { logInUser, registerUser } from 'redux/operetions/auth-operetions';
 
@@ -11,7 +11,6 @@ const AuthUserComponent = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const dispatch = useDispatch();
- 
 
   const handlInputChange = e => {
     const { value, name } = e.currentTarget;
@@ -33,8 +32,8 @@ const AuthUserComponent = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const userRegisterInfo = {name, email, password};
-    const userLoginInfo = {email, password};
+    const userRegisterInfo = { name, email, password };
+    const userLoginInfo = { email, password };
     if (name) {
       dispatch(registerUser(userRegisterInfo));
     } else dispatch(logInUser(userLoginInfo));
@@ -65,7 +64,8 @@ const AuthUserComponent = () => {
             boxShadow: '5px 5px 10px #2a2a2a',
             background: '#fff',
           }}
-        >{}
+        >
+          {}
           {location.pathname === '/login' ? (
             <Login
               handlInputChange={handlInputChange}

@@ -12,34 +12,36 @@ export const HomeBox = styled(Box)`
   flex-direction: column;
   font-family: 'Roboto Slab';
   @media screen and (min-width: 500px) {
-     flex-direction: row;
-      justify-content: flex-start;
-      align-items: start;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: start;
   }
 `;
 export const HomeDescr = styled(Typography)`
   font-weight: 500;
   font-size: 16px;
   margin-top: 15px;
+  padding: 0 15px;
+
   @media screen and (min-width: 500px) {
     font-size: 20px;
   }
   @media screen and (min-width: 768px) {
     font-size: 25px;
   }
-  a{
-    text-decoration:none;
+  a {
+    text-decoration: none;
     font-weight: 700;
-  font-size: 16px;
-  margin-left: 5px;
-  color: #006400;
-  cursor: pointer;
-  @media screen and (min-width: 500px) {
-    font-size: 20px;
-  }
-  @media screen and (min-width: 768px) {
-    font-size: 25px;
-  }
+    font-size: 16px;
+    margin-left: 5px;
+    color: #006400;
+    cursor: pointer;
+    @media screen and (min-width: 500px) {
+      font-size: 20px;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 25px;
+    }
   }
 `;
 
