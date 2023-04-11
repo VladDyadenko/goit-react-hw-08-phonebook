@@ -1,10 +1,12 @@
 import { Button, TextField, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import { Span } from './Register.styled';
+import { useNavigate } from 'react-router-dom';
 
-const Register = (props) => {
+const Register = props => {
   const { handlInputChange, email, password, name } = props;
-
+  const navigate = useNavigate();
 
   return (
     <Fragment>
@@ -60,10 +62,17 @@ const Register = (props) => {
         Register
       </Button>
       <Typography variant="body1" sx={{ fontFamily: 'Roboto Slab, ' }}>
-      you have an account<Span>login</Span>
+        Do you have an account?
+        <Span onClick={() => navigate('/login')}>Login</Span>
       </Typography>
     </Fragment>
   );
 };
 
+Register.propTypes = {
+  handlInputChange: PropTypes.func,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 export default Register;

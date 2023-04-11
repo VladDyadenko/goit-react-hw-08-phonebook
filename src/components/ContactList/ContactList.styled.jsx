@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Button } from '@mui/material';
 
 export const Box = styled.ul`
   width: 100%;
@@ -42,5 +43,14 @@ export const ContactNumber = styled.span`
   @media screen and (min-width: 768px) {
     width: 40%;
     font-size: 18px;
+  }
+`;
+export const Btn = styled(Button)`
+  width: 30%;
+  font-family: 'Roboto Slab';
+  font-size: 11px;
+  @media screen and (min-width: 480px) {
+    width: 25%;
+    font-size: 14px;
   }
 `;

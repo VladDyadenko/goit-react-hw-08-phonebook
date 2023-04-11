@@ -70,7 +70,7 @@ export const LinkHeader = styled(NavLink)`
   text-decoration: none;
   color: #fff;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 500;
   padding: 0 8px;
   @media screen and (min-width: 480px) and (max-width: 767px) {
     font-size: 13px;
@@ -81,6 +81,7 @@ export const LinkHeader = styled(NavLink)`
     padding: 0 25px;
   }
   &.active {
-    color: #006400;
+    color: 	#00FF00;
+   
   }
 `;

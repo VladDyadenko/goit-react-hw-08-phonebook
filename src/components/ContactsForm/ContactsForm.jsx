@@ -69,7 +69,7 @@ function ContactForm() {
         value={name}
         onChange={handlChange}
         label="Name"
-        placeholder="enter your email"
+        placeholder="enter your name"
         variant="outlined"
       />
       <TextField

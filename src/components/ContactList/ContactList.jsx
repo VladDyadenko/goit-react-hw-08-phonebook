@@ -1,7 +1,13 @@
 import { AiOutlinePhone } from 'react-icons/ai';
 import { FaTrashAlt } from 'react-icons/fa';
 
-import { Box, ContactName, ContactNumber, List } from './ContactList.styled';
+import {
+  Box,
+  Btn,
+  ContactName,
+  ContactNumber,
+  List,
+} from './ContactList.styled';
 import { deleteContacts, fetchContacts } from 'redux/operetions/operetions';
 import { useDispatch, useSelector } from 'react-redux';
 import Massege from 'components/Massege';
@@ -11,7 +17,6 @@ import {
 } from 'redux/selector/selectors';
 import { useEffect } from 'react';
 import { Audio } from 'react-loader-spinner';
-import { Button } from '@mui/material';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -36,7 +41,7 @@ const ContactList = () => {
               <ContactName>{name}</ContactName>
               <ContactNumber>{number}</ContactNumber>
               <>
-                <Button
+                <Btn
                   sx={{ width: '30%', fontFamily: 'Roboto Slab' }}
                   variant="contained"
                   size="small"
@@ -52,7 +57,6 @@ const ContactList = () => {
                       width="40"
                       color="#ffffff"
                       ariaLabel="audio-loading"
-                      wrapperStyle={{}}
                       wrapperClass="wrapper-class"
                       visible={true}
                     />
@@ -61,7 +65,7 @@ const ContactList = () => {
                       Delete <FaTrashAlt style={svgStyleUser} size={15} />
                     </>
                   )}
-                </Button>
+                </Btn>
               </>
             </List>
           ))}
