@@ -1,37 +1,42 @@
-import { Container } from './App.styled';
-import ContactForm from './ContactsForm';
-import ContactList from './ContactList';
-import Filter from './Filter';
-import Title from './Title';
-import { useSelector } from 'react-redux';
-import { selectError, selectOperetion } from 'redux/selectors';
-import ErrorCard from './ErrorCard/ErrorCard';
-import { RotatingLines } from 'react-loader-spinner';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { lazy, useEffect } from 'react';
+import { refreshUser } from 'redux/operetions/auth-operetions';
+import PrivateRoute from './PrivateRoute/PrivatRoute';
+import Home from 'Page/Home/Home';
+import { getIsLoggedIn } from 'redux/selector/selectors';
+import PublicRoute from './PublicRoute/PublicRoute';
+import NotFaund from 'Page/NotFaund/NotFaund';
+import Header from './Header/Header';
+const Contacts = lazy(() => import('./Contacts/Contacts'));
+const AuthUserComponent = lazy(() =>
+  import('./AuthUserComponent/AuthUserComponent')
+);
 
 const App = () => {
-  const operetion = useSelector(selectOperetion);
-  const error = useSelector(selectError);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
-    <Container>
-      <Title title="Phonebook"></Title>
-      <ContactForm />
-      {error && <ErrorCard />}
-      <div>
-        <Title title="Contacts"></Title>
-        <Filter />
-        {operetion === 'fatch' && (
-          <RotatingLines
-            strokeColor="#188ce8"
-            strokeWidth="5"
-            animationDuration="0.75"
-            width="60"
-            visible={true}
-          />
-        )}
-        <ContactList />
-      </div>
-    </Container>
+    <div>
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route index element={isLoggedIn === false && <Home />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="contacts" element={<Contacts />} />
+          </Route>
+          <Route element={<PublicRoute />}>
+            <Route path="login" element={<AuthUserComponent />} />
+            <Route path="register" element={<AuthUserComponent />} />
+          </Route>
+          <Route path="*" element={<NotFaund />} />
+        </Route>
+      </Routes>
+    </div>
   );
 };
 

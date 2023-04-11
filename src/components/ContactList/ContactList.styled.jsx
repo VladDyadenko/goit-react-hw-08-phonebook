@@ -6,16 +6,15 @@ export const Box = styled.ul`
   margin: 20px auto;
   padding: 5px;
   list-style: none;
-
   font-size: 18px;
+  align-items:center
 `;
 export const List = styled.li`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: start;
-  /* grid-template-columns: 30px repeat(2, 80px 80px) 100px; */
-  margin-bottom: 8px;
+   margin-bottom: 8px;
 `;
 export const ContactName = styled.span`
   min-width: 30%;
@@ -43,30 +42,8 @@ export const ContactNumber = styled.span`
   @media screen and (min-width: 768px) {
     width: 40%;
     font-size: 18px;
+    
   }
 `;
 
-export const Btn = styled.button`
-  border: none;
-  width: 90px;
-  padding: 0 5px;
-  cursor: pointer;
 
-  font-family: 'Roboto Slab', sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.88;
-  letter-spacing: 0.06em;
-  border-radius: 4px;
-  color: #ffffff;
-  background-color: #188ce8;
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;

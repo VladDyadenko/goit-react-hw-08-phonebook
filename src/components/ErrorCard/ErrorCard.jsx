@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { ErrorInfo, ErrorTitle } from './ErrorCard.styled';
-import { selectError } from 'redux/selectors';
+import { selectError } from 'redux/selector/selectors';
 
 const ErrorCard = () => {
   const error = useSelector(selectError);

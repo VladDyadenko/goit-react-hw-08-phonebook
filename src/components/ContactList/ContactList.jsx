@@ -3,17 +3,19 @@ import { FaTrashAlt } from 'react-icons/fa';
 
 import {
   Box,
-  Btn,
   ContactName,
   ContactNumber,
   List,
 } from './ContactList.styled';
-import { deleteContacts, fetchContacts } from 'redux/operetions';
+import { deleteContacts, fetchContacts } from 'redux/operetions/operetions';
 import { useDispatch, useSelector } from 'react-redux';
 import Massege from 'components/Massege';
-import { selectOperetion, selectVisibleContacts } from 'redux/selectors';
+import { selectOperetion, selectVisibleContacts } from 'redux/selector/selectors';
 import { useEffect } from 'react';
 import { Audio } from 'react-loader-spinner';
+import { Button } from '@mui/material';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ContactList = () => {
   const svgStylePhon = { fill: '#006400', marginRight: '10px', width: '10%' };
@@ -28,16 +30,22 @@ const ContactList = () => {
 
   return (
     <>
-      {contacts.length > 0 ? (
+      {contacts?.length > 0 ? (
         <Box>
-          {contacts.map(({ id, name, phone }) => (
+          {contacts?.map(({ id, name, phone }) => (
             <List key={id}>
               <AiOutlinePhone style={svgStylePhon} size={20}></AiOutlinePhone>
               <ContactName>{name}</ContactName>
               <ContactNumber>{phone}</ContactNumber>
               <>
-                <Btn type="button" onClick={e => dispatch(deleteContacts(id))}>
-                  {operetion === id ? (
+              <Button
+              sx={{ width: '30%', fontFamily: 'Roboto Slab' }}
+              variant="contained" size="small"
+              type="button" onClick={e => {
+                toast.success('The contact has been deleted!')
+                dispatch(deleteContacts(id))}}
+              >
+                 {operetion === id ? (
                     <Audio
                       height="20"
                       width="40"
@@ -52,7 +60,8 @@ const ContactList = () => {
                       Delete <FaTrashAlt style={svgStyleUser} size={15} />
                     </>
                   )}
-                </Btn>
+              </Button>
+
               </>
             </List>
           ))}
@@ -60,6 +69,7 @@ const ContactList = () => {
       ) : (
         <Massege>No Massege</Massege>
       )}
+      <ToastContainer autoClose={2000} />
     </>
   );
 };
