@@ -35,9 +35,22 @@ const AuthUserComponent = () => {
     const userRegisterInfo = { name, email, password };
     const userLoginInfo = { email, password };
     if (name) {
-      dispatch(registerUser(userRegisterInfo));
-    } else dispatch(logInUser(userLoginInfo));
-    reset();
+      dispatch(registerUser(userRegisterInfo)).then(result => {
+        if (result.payload) {
+          return;
+        }
+
+        reset();
+      });
+    } else {
+      dispatch(logInUser(userLoginInfo)).then(result => {
+        if (result.payload) {
+          return;
+        }
+
+        reset();
+      });
+    }
   };
 
   const reset = () => {

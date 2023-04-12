@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -20,6 +22,8 @@ export const registerUser = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      alert(error.message);
+      
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -33,6 +37,8 @@ export const logInUser = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      alert(error.message);
+      history.back();
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -43,9 +49,12 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
+    alert(error.message);
+    history.back();
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
@@ -59,6 +68,8 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
+      alert(error.message);
+      history.back();
       return thunkAPI.rejectWithValue(error.message);
     }
   }

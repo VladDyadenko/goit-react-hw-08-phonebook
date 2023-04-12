@@ -53,7 +53,7 @@ const ContactList = () => {
                 >
                   {operetion === id ? (
                     <Audio
-                      height="20"
+                      height="24.4"
                       width="40"
                       color="#ffffff"
                       ariaLabel="audio-loading"

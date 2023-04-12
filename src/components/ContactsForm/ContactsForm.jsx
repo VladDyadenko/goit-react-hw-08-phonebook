@@ -100,7 +100,7 @@ function ContactForm() {
       >
         {operetion === 'add' ? (
           <Audio
-            height="30"
+            height="24.4"
             width="100"
             color="#ffffff"
             ariaLabel="audio-loading"
